@@ -33,10 +33,8 @@ TEST(Cassini_Constructor, Exception) {
 
 TEST(Cassini_Methods, Setters) {
     Cassini cassini;
-    cassini.Set_Distance(-4);
-    ASSERT_EQ(0, cassini.Get_Distance());
-    cassini.Set_Focal_Parameter(-3);
-    ASSERT_EQ(0, cassini.Get_Focal_Parameter());
+    ASSERT_ANY_THROW(cassini.Set_Distance(-4));
+    ASSERT_ANY_THROW(cassini.Set_Focal_Parameter(-3));
     cassini.Set_Distance(8);
     ASSERT_EQ(8, cassini.Get_Distance());
     cassini.Set_Focal_Parameter(6);

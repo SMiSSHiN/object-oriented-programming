@@ -58,9 +58,11 @@ namespace Prog2 {
         double a = 0;
         
         a = getNum<double>("Enter the distance: ");
-        if (!cassini.Set_Distance(a)) {
-           std::cout << "The distance should be a positive number!" << std::endl;
-           return;
+        try {
+            cassini.Set_Distance(a);
+        }
+        catch (const char *error) {
+            std::cerr << error << std::endl;
         }
     }
     
@@ -72,9 +74,11 @@ namespace Prog2 {
         double c = 0;
         
         c = getNum<double>("Enter the focal parameter: ");
-        if (!cassini.Set_Focal_Parameter(c)) {
-           std::cout << "The focal parameter should be a positive number!" << std::endl;
-           return;
+        try {
+            cassini.Set_Focal_Parameter(c);
+        }
+        catch (const char *error) {
+            std::cerr << error << std::endl;
         }
     }
     

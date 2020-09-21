@@ -23,31 +23,31 @@ namespace Prog2 {
         }
     }
     
-    bool Cassini::Set_Distance(double a) {
+    Cassini &Cassini::Set_Distance(double a) {
         if (a < 0) {
-           return false;
+           throw "The distance should be a positive number!";
         }
         this->a = a;
-        return true;
+        return *this;
     }
     
-    double Cassini::Get_Distance() {
+    double Cassini::Get_Distance() const {
         return this->a;
     }
     
-    bool Cassini::Set_Focal_Parameter(double c) {
+    Cassini &Cassini::Set_Focal_Parameter(double c) {
         if (c < 0) {
-           return false;
+           throw "The focal parameter should be a positive number!";
         }
         this->c = c;
-        return true;
+        return *this;
     }
     
-    double Cassini::Get_Focal_Parameter() {
+    double Cassini::Get_Focal_Parameter() const {
         return this->c;
     }
     
-    double Cassini::Get_Center_Distance(double t) {
+    double Cassini::Get_Center_Distance(double t) const {
         t = 2 * t * M_PI / 180;
         if ((pow(this->c, 4) * pow(cos(t), 2) + pow(this->a, 4) - pow(this->c, 4)) >= 0) {
            return fabs(pow(this->c, 2) * cos(t) + sqrt(pow(this->c, 4) * pow(cos(t), 2) + pow(this->a, 4) - pow(this->c, 4)));
@@ -57,10 +57,7 @@ namespace Prog2 {
         }
     }
     
-    std::string Cassini::Get_Shape_Type() {    
-        if (this->a == 0 && this->c == 0) {
-           return "point of origin";
-        }
+    std::string Cassini::Get_Shape_Type() const {   
         if (this->a == 0 && this->c != 0) {
            return "two points";
         }
@@ -79,10 +76,10 @@ namespace Prog2 {
         if (this->a >= this->c * sqrt(2) && this->a != 0 && this->c != 0) {
            return "oval";
         }
-        return "";
+        return "point of origin";
     }
     
-    double Cassini::Get_Curvature_Radius(double t) {
+    double Cassini::Get_Curvature_Radius(double t) const {
         t = 2 * t * M_PI / 180;
         if ((pow(this->c, 4) * pow(cos(t), 2) + pow(this->a, 4) - pow(this->c, 4)) >= 0) {
            double r = fabs(pow(this->c, 2) * cos(t) + sqrt(pow(this->c, 4) * pow(cos(t), 2) + pow(this->a, 4) - pow(this->c, 4)));
@@ -98,15 +95,15 @@ namespace Prog2 {
         }
     }
     
-    double Cassini::Get_Inflection_Points_Polar_Radius() {  
+    double Cassini::Get_Inflection_Points_Polar_Radius() const {  
         return pow(((pow(this->a, 4) - pow(this->c, 4)) / 3), 0.25);
     }
     
-    double Cassini::Get_Inflection_Points_Polar_Angle() {
+    double Cassini::Get_Inflection_Points_Polar_Angle() const {
         return acos((-1) * sqrt((pow((this->a / this->c), 4) - 1) / 3)) * 180 / (2 * M_PI);
     }
     
-    std::string Cassini::Get_Equation() {
+    std::string Cassini::Get_Equation() const {
         if (this->a == 0 && this->c == 0) {
            return "(x ^ 2 + y ^ 2) ^ 2 = 0";
         }
