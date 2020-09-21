@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <string.h>
 
 #include "Cassini.h"
 
@@ -58,31 +57,29 @@ namespace Prog2 {
         }
     }
     
-    const char *Cassini::Get_Shape_Type() {
-        const char *s = new char[25];
-        
+    std::string Cassini::Get_Shape_Type() {    
         if (this->a == 0 && this->c == 0) {
-           s = "point of origin";
+           return "point of origin";
         }
         if (this->a == 0 && this->c != 0) {
-           s = "two points";
+           return "two points";
         }
         if (this->a != 0 && this->c == 0) {
-           s = "circle";
+           return "circle";
         }
         if (this->a > 0 && this->a < this->c) {
-           s = "two separate ovals";
+           return "two separate ovals";
         }
         if (this->a == this->c && this->a != 0 && this->c != 0) {
-           s = "lemniscate";
+           return "lemniscate";
         }
         if (this->c < this->a && this->a <= this->c * sqrt(2)) {
-           s = "with inflection points";
+           return "with inflection points";
         }
         if (this->a >= this->c * sqrt(2) && this->a != 0 && this->c != 0) {
-           s = "oval";
+           return "oval";
         }
-        return s;
+		return "";
     }
     
     double Cassini::Get_Curvature_Radius(double t) {
@@ -109,33 +106,22 @@ namespace Prog2 {
         return acos((-1) * sqrt((pow((this->a / this->c), 4) - 1) / 3)) * 180 / (2 * M_PI);
     }
     
-    char *Cassini::Get_Equation() {
-        const char *s1 = "(x ^ 2 + y ^ 2) ^ 2 - * (x ^ 2 - y ^ 2) = ";
-        int l = strlen(s1) + 1;
-        char num[20];
-        
-        snprintf(num, 20, "%.2f", 2 * pow(this->c, 2));
-        l += strlen(num);
-        snprintf(num, 20, "%.2f", pow(this->a, 4) - pow(this->c, 4));
-        l += strlen(num);
-        
-        char *s = new char[l];
-        
-        if (this->c == 0) {
-           snprintf(s, l, "(x ^ 2 + y ^ 2) ^ 2");
-        }
-        else {
-           snprintf(s, l, "(x ^ 2 + y ^ 2) ^ 2 - %.2f * (x ^ 2 - y ^ 2)", 2 * pow(this->c, 2));
-        }
-        
-        int k = strlen(s);
-        
-        if (this->a == this->c) {
-           snprintf(s + k, l - k, " = 0");
-        }
-        else {
-           snprintf(s + k, l - k, " = %.2f", pow(this->a, 4) - pow(this->c, 4));
-        }
-        return s;
-    }
+    std::string Cassini::Get_Equation() {
+		if (this->a == 0 && this->c == 0) {
+		   return "(x ^ 2 + y ^ 2) ^ 2 = 0";
+		}
+		else {
+		   std::stringstream ss;
+		   if (this->a == 0) {
+			  ss << "(x ^ 2 + y ^ 2) ^ 2 - " << 2 * pow(this->c, 2) << " (x ^ 2 - y ^ 2) = " << (-1) * pow(this->c, 4);
+		   }
+		   else if (this->c == 0) {
+			  ss << "(x ^ 2 + y ^ 2) ^ 2 = " << pow(this->a, 4);
+		   }
+		   else {
+			  ss << "(x ^ 2 + y ^ 2) ^ 2 - " << 2 * pow(this->c, 2) << " * (x ^ 2 - y ^ 2) = " << pow(this->a, 4) - pow(this->c, 4);
+		   }
+	       return ss.str();
+		}
+	}
 }

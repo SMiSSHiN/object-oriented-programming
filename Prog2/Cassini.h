@@ -1,6 +1,8 @@
 #pragma once
 
 #include <math.h>
+#include <sstream>
+#include <string>
 
 namespace Prog2 {
     class Cassini {
@@ -15,10 +17,10 @@ namespace Prog2 {
         bool Set_Focal_Parameter(double c);
         double Get_Focal_Parameter();
         double Get_Center_Distance(double t);
-        const char *Get_Shape_Type();
+        std::string Get_Shape_Type();
         double Get_Curvature_Radius(double t);
         double Get_Inflection_Points_Polar_Radius();
         double Get_Inflection_Points_Polar_Angle();
-        char *Get_Equation();
+        std::string Get_Equation();
     };
 }

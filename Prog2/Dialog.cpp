@@ -111,7 +111,7 @@ namespace Prog2 {
     }
     
     void Get_Inflection_Points_Polar_Coordinates(Cassini &cassini) {
-        if (strcmp(cassini.Get_Shape_Type(), "with inflection points") == 0) {
+        if (cassini.Get_Shape_Type() == "with inflection points") {
            std::cout << "Inflection points polar radius = " << cassini.Get_Inflection_Points_Polar_Radius() << std::endl;
            std::cout << "Inflection points polar angle = " << cassini.Get_Inflection_Points_Polar_Angle() << std::endl;
         }

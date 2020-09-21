@@ -73,12 +73,12 @@ TEST(Cassini_Methods, Inflection_Points_Coordinates) {
 
 TEST(Cassini_Methods, Equation_NULL) {
     Cassini cassini;
-    ASSERT_STREQ("(x ^ 2 + y ^ 2) ^ 2 = 0", cassini.Get_Equation());
+    ASSERT_EQ("(x ^ 2 + y ^ 2) ^ 2 = 0", cassini.Get_Equation());
 }
 
 TEST(Cassini_Methods, Equation_Not_NULL) {
     Cassini cassini(2, 3);
-    ASSERT_STREQ("(x ^ 2 + y ^ 2) ^ 2 - 18.00 * (x ^ 2 - y ^ 2) = -65.0", cassini.Get_Equation());
+    ASSERT_EQ("(x ^ 2 + y ^ 2) ^ 2 - 18 * (x ^ 2 - y ^ 2) = -65", cassini.Get_Equation());
 }
 
 int main(int argc, char *argv[]) {
