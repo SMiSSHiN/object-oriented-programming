@@ -79,7 +79,7 @@ namespace Prog2 {
         if (this->a >= this->c * sqrt(2) && this->a != 0 && this->c != 0) {
            return "oval";
         }
-		return "";
+        return "";
     }
     
     double Cassini::Get_Curvature_Radius(double t) {
@@ -107,21 +107,21 @@ namespace Prog2 {
     }
     
     std::string Cassini::Get_Equation() {
-		if (this->a == 0 && this->c == 0) {
-		   return "(x ^ 2 + y ^ 2) ^ 2 = 0";
-		}
-		else {
-		   std::stringstream ss;
-		   if (this->a == 0) {
-			  ss << "(x ^ 2 + y ^ 2) ^ 2 - " << 2 * pow(this->c, 2) << " (x ^ 2 - y ^ 2) = " << (-1) * pow(this->c, 4);
-		   }
-		   else if (this->c == 0) {
-			  ss << "(x ^ 2 + y ^ 2) ^ 2 = " << pow(this->a, 4);
-		   }
-		   else {
-			  ss << "(x ^ 2 + y ^ 2) ^ 2 - " << 2 * pow(this->c, 2) << " * (x ^ 2 - y ^ 2) = " << pow(this->a, 4) - pow(this->c, 4);
-		   }
-	       return ss.str();
-		}
-	}
+        if (this->a == 0 && this->c == 0) {
+           return "(x ^ 2 + y ^ 2) ^ 2 = 0";
+        }
+        else {
+           std::stringstream ss;
+           if (this->a == 0) {
+              ss << "(x ^ 2 + y ^ 2) ^ 2 - " << 2 * pow(this->c, 2) << " (x ^ 2 - y ^ 2) = " << (-1) * pow(this->c, 4);
+           }
+           else if (this->c == 0) {
+              ss << "(x ^ 2 + y ^ 2) ^ 2 = " << pow(this->a, 4);
+           }
+           else {
+              ss << "(x ^ 2 + y ^ 2) ^ 2 - " << 2 * pow(this->c, 2) << " * (x ^ 2 - y ^ 2) = " << pow(this->a, 4) - pow(this->c, 4);
+           }
+           return ss.str();
+        }
+    }
 }
