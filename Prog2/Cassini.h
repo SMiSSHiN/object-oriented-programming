@@ -12,9 +12,9 @@ namespace Prog2 {
     public:
         Cassini();
         Cassini(double a, double c);
-        Cassini& Set_Distance(double a);
+        Cassini &Set_Distance(double a);
         double Get_Distance() const;
-        Cassini& Set_Focal_Parameter(double c);
+        Cassini &Set_Focal_Parameter(double c);
         double Get_Focal_Parameter() const;
         double Get_Center_Distance(double t) const;
         std::string Get_Shape_Type() const;
