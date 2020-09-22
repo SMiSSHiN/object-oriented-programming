@@ -55,6 +55,7 @@ TEST(Cassini_Methods, Center_Distance) {
 TEST(Cassini_Methods, Shape_Type) {
     Cassini cassini(23, 34);
     ASSERT_EQ("two separate ovals", cassini.Get_Shape_Type());
+	ASSERT_EQ("with inflection points", cassini.Set_Distance(6).Set_Focal_Parameter(5).Get_Shape_Type());
 }
 
 TEST(Cassini_Methods, Curvature_Radius) {
