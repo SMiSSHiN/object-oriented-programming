@@ -18,7 +18,7 @@ TEST(Cassini_Constructor, Init_Constructor) {
     ASSERT_EQ(3, cassini.Get_Focal_Parameter());
 }
 
-TEST(Cassini_Constructor, Exception) {
+TEST(Cassini_Constructor, Exceptions) {
     ASSERT_NO_THROW(Cassini cassini_1);
     ASSERT_NO_THROW(Cassini cassini_2(15, 10));
     ASSERT_ANY_THROW(Cassini cassini_3(-20, 48));
