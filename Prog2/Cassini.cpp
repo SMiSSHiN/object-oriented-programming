@@ -9,18 +9,8 @@ namespace Prog2 {
     }
     
     Cassini::Cassini(double a, double c) {
-        if (a >= 0) {
-           this->a = a;
-        }
-        else {
-           this->a = 0;
-        }
-        if (c >= 0) {
-           this->c = c;
-        }
-        else {
-           this->c = 0;
-        }
+        Set_Distance(a);
+        Set_Focal_Parameter(c);
     }
     
     Cassini &Cassini::Set_Distance(double a) {
@@ -52,9 +42,7 @@ namespace Prog2 {
         if ((pow(this->c, 4) * pow(cos(t), 2) + pow(this->a, 4) - pow(this->c, 4)) >= 0) {
            return fabs(pow(this->c, 2) * cos(t) + sqrt(pow(this->c, 4) * pow(cos(t), 2) + pow(this->a, 4) - pow(this->c, 4)));
         }
-        else {
-           return -1;
-        }
+        return -1;
     }
     
     std::string Cassini::Get_Shape_Type() const {   
@@ -86,13 +74,8 @@ namespace Prog2 {
            if (r > 0) {
               return pow(this->a, 2) * r / (pow(r, 2) + cos(t) * pow(this->c, 2));
            }
-           else {
-              return -2;
-           }
         }
-        else {
-           return -1;
-        }
+        return -1;
     }
     
     double Cassini::Get_Inflection_Points_Polar_Radius() const {  

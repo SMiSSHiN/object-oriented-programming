@@ -16,19 +16,13 @@ TEST(Cassini_Constructor, Init_Constructor) {
     Cassini cassini_1(4, 3);
     ASSERT_EQ(4, cassini_1.Get_Distance());
     ASSERT_EQ(3, cassini_1.Get_Focal_Parameter());
-
-    Cassini cassini_2(-1, 6);
-    ASSERT_EQ(0, cassini_2.Get_Distance());
-    ASSERT_EQ(6, cassini_2.Get_Focal_Parameter());
-    
-    Cassini cassini_3(5, -1);
-    ASSERT_EQ(5, cassini_3.Get_Distance());
-    ASSERT_EQ(0, cassini_3.Get_Focal_Parameter());
 }
 
 TEST(Cassini_Constructor, Exception) {
     ASSERT_NO_THROW(Cassini cassini_1);
     ASSERT_NO_THROW(Cassini cassini_2(150, 100));
+    ASSERT_ANY_THROW(Cassini cassini_3(-20, 48));
+    ASSERT_ANY_THROW(Cassini cassini_4(10, -30));
 }
 
 TEST(Cassini_Methods, Setters) {
