@@ -33,10 +33,9 @@ TEST(Cassini_Methods, Setters) {
     ASSERT_EQ(6, cassini.Set_Focal_Parameter(6).Get_Focal_Parameter());
 }
 
-TEST(Cassini_Methods, Distance_Focal_Parameter) {
-    Cassini cassini(3, 5);
-    ASSERT_EQ(3, cassini.Get_Distance());
-    ASSERT_EQ(5, cassini.Get_Focal_Parameter());
+TEST(Cassini_Methods, Center_Distance) {
+    Cassini cassini(6, 5);
+    ASSERT_EQ(fabs(pow(5, 2) * cos(M_PI / 3) + sqrt(pow(5, 4) * pow(cos(M_PI / 3), 2) + pow(6, 4) - pow(5, 4))), cassini.Get_Center_Distance(30));
 }
 
 TEST(Cassini_Methods, Shape_Type) {
