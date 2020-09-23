@@ -67,7 +67,7 @@ namespace Prog2 {
     }
     
     void Get_Distance(Cassini &cassini) {
-        std::cout << "a = " << cassini.Get_Distance() << std::endl;
+        std::cout << "Distance = " << cassini.Get_Distance() << std::endl;
     }
     
     void Set_Focal_Parameter(Cassini &cassini) {
@@ -83,7 +83,7 @@ namespace Prog2 {
     }
     
     void Get_Focal_Parameter(Cassini &cassini) {
-        std::cout << "c = " << cassini.Get_Focal_Parameter() << std::endl;
+        std::cout << "Focal parameter = " << cassini.Get_Focal_Parameter() << std::endl;
     }
     
     void Get_Center_Distance(Cassini &cassini) {
