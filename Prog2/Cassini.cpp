@@ -15,7 +15,7 @@ namespace Prog2 {
     
     Cassini &Cassini::Set_Distance(double a) {
         if (a < 0) {
-           throw "The distance should be a positive number!";
+           throw "The distance should be a non-negative number!";
         }
         this->a = a;
         return *this;
@@ -27,7 +27,7 @@ namespace Prog2 {
     
     Cassini &Cassini::Set_Focal_Parameter(double c) {
         if (c < 0) {
-           throw "The focal parameter should be a positive number!";
+           throw "The focal parameter should be a non-negative number!";
         }
         this->c = c;
         return *this;
