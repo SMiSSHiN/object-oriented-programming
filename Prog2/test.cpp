@@ -18,10 +18,8 @@ TEST(Cassini_Constructor, Initial_Constructor) {
     ASSERT_NO_THROW(cassini_1);
     ASSERT_EQ(4, cassini_1.Get_Distance());
     ASSERT_EQ(3, cassini_1.Get_Focal_Parameter());
-    Cassini cassini_2(-7, 9);
-    ASSERT_ANY_THROW(cassini_2);
-    Cassini cassini_3(12, -4);
-    ASSERT_ANY_THROW(cassini_3);
+    ASSERT_ANY_THROW(Cassini cassini_2(-7, 9););
+    ASSERT_ANY_THROW(Cassini cassini_3(12, -5););
 }
 
 TEST(Cassini_Methods, Setters) {
