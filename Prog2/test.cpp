@@ -8,29 +8,30 @@ using namespace Prog2;
 
 TEST(Cassini_Constructor, Default_Constructor) {
     Cassini cassini;
+    ASSERT_NO_THROW(cassini);
     ASSERT_EQ(0, cassini.Get_Distance());
     ASSERT_EQ(0, cassini.Get_Focal_Parameter());
 }
 
-TEST(Cassini_Constructor, Init_Constructor) {
-    Cassini cassini(4, 3);
-    ASSERT_EQ(4, cassini.Get_Distance());
-    ASSERT_EQ(3, cassini.Get_Focal_Parameter());
-}
-
-TEST(Cassini_Constructor, Exceptions) {
-    ASSERT_NO_THROW(Cassini cassini_1);
-    ASSERT_NO_THROW(Cassini cassini_2(15, 10));
-    ASSERT_ANY_THROW(Cassini cassini_3(-20, 48));
-    ASSERT_ANY_THROW(Cassini cassini_4(10, -30));
+TEST(Cassini_Constructor, Initial_Constructor) {
+    Cassini cassini_1(4, 3);
+    ASSERT_NO_THROW(cassini_1);
+    ASSERT_EQ(4, cassini_1.Get_Distance());
+    ASSERT_EQ(3, cassini_1.Get_Focal_Parameter());
+    Cassini cassini_2(-7, 9);
+    ASSERT_ANY_THROW(cassini_2);
+    Cassini cassini_3(12, -4);
+    ASSERT_ANY_THROW(cassini_3);
 }
 
 TEST(Cassini_Methods, Setters) {
     Cassini cassini;
+    ASSERT_NO_THROW(cassini.Set_Distance(8));
+    ASSERT_EQ(8, cassini.Get_Distance());
+    ASSERT_NO_THROW(cassini.Set_Focal_Parameter(6));
+    ASSERT_EQ(6, cassini.Get_Focal_Parameter());
     ASSERT_ANY_THROW(cassini.Set_Distance(-4));
     ASSERT_ANY_THROW(cassini.Set_Focal_Parameter(-3));
-    ASSERT_EQ(8, cassini.Set_Distance(8).Get_Distance());
-    ASSERT_EQ(6, cassini.Set_Focal_Parameter(6).Get_Focal_Parameter());
 }
 
 TEST(Cassini_Methods, Center_Distance) {
@@ -39,8 +40,20 @@ TEST(Cassini_Methods, Center_Distance) {
 }
 
 TEST(Cassini_Methods, Shape_Type) {
-    Cassini cassini(23, 34);
-    ASSERT_EQ("two separate ovals", cassini.Get_Shape_Type());
+    Cassini cassini_1;
+    ASSERT_EQ("point of origin", cassini_1.Get_Shape_Type());
+    Cassini cassini_2(0, 2);
+    ASSERT_EQ("two points", cassini_2.Get_Shape_Type());
+    Cassini cassini_3(4, 0);
+    ASSERT_EQ("circle", cassini_3.Get_Shape_Type());
+    Cassini cassini_4(3, 4);
+    ASSERT_EQ("two separate ovals", cassini_4.Get_Shape_Type());
+    Cassini cassini_5(7, 7);
+    ASSERT_EQ("lemniscate", cassini_5.Get_Shape_Type());
+    Cassini cassini_6(6, 5);
+    ASSERT_EQ("with inflection points", cassini_6.Get_Shape_Type());
+    Cassini cassini_7(15, 8);
+    ASSERT_EQ("oval", cassini_7.Get_Shape_Type());
 }
 
 TEST(Cassini_Methods, Curvature_Radius) {
