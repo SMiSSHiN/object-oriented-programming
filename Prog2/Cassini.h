@@ -2,7 +2,6 @@
 
 #include <math.h>
 #include <sstream>
-#include <string>
 
 namespace Prog2 {
     class Cassini {
