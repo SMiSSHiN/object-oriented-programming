@@ -9,8 +9,8 @@ namespace Prog2 {
     }
     
     Cassini::Cassini(double a, double c) {
-        Set_Distance(a);
-        Set_Focal_Parameter(c);
+        this->Set_Distance(a);
+        this->Set_Focal_Parameter(c);
     }
     
     Cassini &Cassini::Set_Distance(double a) {
