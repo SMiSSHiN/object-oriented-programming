@@ -18,11 +18,12 @@ namespace Prog2 {
     };
 
     void Dialog(Cassini &cassini) {
+        int choice = 0;
+        
         std::cout << "------------------------------------------------------------" << std::endl;
         while (true) {
            Menu();
            std::cout << "------------------------------------------------------------" << std::endl;
-           int choice = 0;
            choice = getNum<int>("Your choice: ");
            std::cout << "------------------------------------------------------------" << std::endl;
            if (!choice) {
@@ -53,9 +54,8 @@ namespace Prog2 {
     }
     
     void Set_Distance(Cassini &cassini) {
-        double a = 0;
+        double a = getNum<double>("Enter the distance: ");
         
-        a = getNum<double>("Enter the distance: ");
         try {
             cassini.Set_Distance(a);
         }
@@ -69,9 +69,8 @@ namespace Prog2 {
     }
     
     void Set_Focal_Parameter(Cassini &cassini) {
-        double c = 0;
+        double c = getNum<double>("Enter the focal parameter: ");
         
-        c = getNum<double>("Enter the focal parameter: ");
         try {
             cassini.Set_Focal_Parameter(c);
         }
@@ -85,9 +84,8 @@ namespace Prog2 {
     }
     
     void Get_Center_Distance(Cassini &cassini) {
-        double t = 0;
+        double t = getNum<double>("Angle value in degrees: ");
         
-        t = getNum<double>("Angle value in degrees: ");
         if (cassini.Get_Center_Distance(t) >= 0) {
            std::cout << "Center distance = " << cassini.Get_Center_Distance(t) << std::endl;
         }
@@ -101,9 +99,8 @@ namespace Prog2 {
     }
     
     void Get_Curvature_Radius(Cassini &cassini) {
-        double t = 0;
+        double t = getNum<double>("Angle value in degrees: ");
         
-        t = getNum<double>("Angle value in degrees: ");
         if (cassini.Get_Curvature_Radius(t) >= 0) {
            std::cout << "Curvature radius = " << cassini.Get_Curvature_Radius(t) << std::endl;
         }
