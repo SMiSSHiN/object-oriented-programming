@@ -154,6 +154,6 @@ namespace Prog3C {
     }
     
     void get_average_passengers_number(train& main_train) {
-        std::cout << "Average number of passengers in the train: " << main_train.get_passengers_number() / main_train.get_length() << std::endl;
+        std::cout << "Average number of passengers in the train: " << main_train.get_passengers_number() / (main_train.get_length() - 1) << std::endl;
     }
 }
