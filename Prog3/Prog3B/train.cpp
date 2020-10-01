@@ -16,11 +16,11 @@ namespace Prog3B {
     void train::cars_push_back(const carriage& main_carriage) {
         struct carriage *new_cars = new struct carriage[this->length + 1];
         
-        memcpy(new_cars, cars, this->length * sizeof(struct carriage));        
+        memcpy(new_cars, this->cars, this->length * sizeof(struct carriage));        
         new_cars[this->length] = main_carriage;
         this->length++;
         delete[] cars;
-        cars = new_cars;
+        this->cars = new_cars;
     }
     
     carriage& carriage::set_carriage(const int maximum_capacity, const int occupied_seats_number) {
@@ -122,7 +122,7 @@ namespace Prog3B {
         }
         
         if (this->cars) {
-           delete[] cars;
+           delete[] this->cars;
         }
         
         this->length = another.length;

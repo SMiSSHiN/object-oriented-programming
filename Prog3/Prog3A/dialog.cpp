@@ -51,6 +51,7 @@ namespace Prog3A {
     
     void set_train(train& main_train) {
         int carriages_number = getNum<int>("Number of carriages to specify: ");
+        int start_length = main_train.get_length();
         
         if (carriages_number < 0 || carriages_number > 100) {
            std::cout << "Invalid carriages number!" << std::endl;
@@ -58,7 +59,7 @@ namespace Prog3A {
         }
         
         for (int i = 1; i <= carriages_number; i++) {
-            std::cout << "Carriage #" << i + main_train.get_length() - 1 << " parameters: ";
+            std::cout << "Carriage #" << i + start_length - 1 << " parameters: ";
             std::cin >> main_train;
         }
     }
