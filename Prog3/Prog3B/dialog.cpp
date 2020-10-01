@@ -53,7 +53,7 @@ namespace Prog3B {
         int carriages_number = getNum<int>("Number of carriages to specify: ");
         int start_length = main_train.get_length();
         
-        if (carriages_number < 0 || carriages_number > 100) {
+        if (carriages_number < 0) {
            std::cout << "Invalid carriages number!" << std::endl;
            return;
         }
@@ -98,11 +98,6 @@ namespace Prog3B {
     }
     
     void add_carriage(train& main_train) {
-        if (main_train.get_length() == 100) {
-           std::cout << "Unable to add carriage!" << std::endl;
-           return;           
-        }
-        
         int carriage_maximum_capacity = getNum<int>("Carriage maximum capacity: ");
         int carriage_occupied_seats_number = getNum<int>("Carriage occupied seats number: ");
         
