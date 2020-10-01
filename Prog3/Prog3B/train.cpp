@@ -19,7 +19,7 @@ namespace Prog3B {
         memcpy(new_cars, this->cars, this->length * sizeof(struct carriage));        
         new_cars[this->length] = main_carriage;
         this->length++;
-        delete[] cars;
+        delete[] this->cars;
         this->cars = new_cars;
     }
     
