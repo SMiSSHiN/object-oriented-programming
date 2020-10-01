@@ -53,7 +53,7 @@ namespace Prog3B {
         int carriages_number = getNum<int>("Number of carriages to specify: ");
         int start_length = main_train.get_length();
         
-        if (carriages_number < 0) {
+        if (carriages_number <= 0) {
            std::cout << "Invalid carriages number!" << std::endl;
            return;
         }
