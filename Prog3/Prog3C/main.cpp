@@ -2,7 +2,6 @@
 
 #include "include/train.h"
 #include "dialog.h"
-#include "util.h"
 
 using namespace Prog3C;
 
