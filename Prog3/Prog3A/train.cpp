@@ -29,11 +29,19 @@ namespace Prog3A {
     }
     
     train::train(struct carriage *cars, int length) {
+        if (length < 1) {
+           throw "Invalid length!";
+        }
+        
         this->set_length(length);
         this->set_carriages(cars);
     }
     
     train& train::set_length(int length) {
+        if (length < 1) {
+           throw "Invalid length!";
+        }
+
         this->length = length;
         
         return *this;
