@@ -14,7 +14,7 @@ namespace Prog3B {
     private:
         struct carriage *cars;
         int length;
-        void cars_push_back(const struct carriage element);
+        void cars_push_back(const carriage& main_carriage);
         void swap(train& another);
     public:
         train();
@@ -31,7 +31,7 @@ namespace Prog3B {
         train& operator = (train&& another) noexcept;
         train& operator () (const int carriage_index, const int seats_number);
         const int& operator [] (const int carriage_index) const;
-        train& operator += (const struct carriage element);
+        train& operator += (const carriage& main_carriage);
         train& operator ( ) (const int carriages_number, int *min_train);
         int get_passengers_number() const;
     };

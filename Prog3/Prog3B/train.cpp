@@ -13,11 +13,11 @@ namespace Prog3B {
         this->set_carriage(maximum_capacity, occupied_seats_number);
     }
     
-    void train::cars_push_back(const struct carriage element) {
+    void train::cars_push_back(const carriage& main_carriage) {
         struct carriage *new_cars = new struct carriage[this->length + 1];
         
         memcpy(new_cars, this->cars, this->length * sizeof(struct carriage));        
-        new_cars[this->length] = element;
+        new_cars[this->length] = main_carriage;
         this->length++;
         delete[] this->cars;
         this->cars = new_cars;
@@ -180,8 +180,8 @@ namespace Prog3B {
         return this->cars[carriage_index].occupied_seats_number;
     }
     
-    train& train::operator += (const struct carriage element) {
-        cars_push_back(element);
+    train& train::operator += (const carriage& main_carriage) {
+        cars_push_back(main_carriage);
         
         return *this;
     }

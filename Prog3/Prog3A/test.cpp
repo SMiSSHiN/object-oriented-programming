@@ -88,18 +88,24 @@ TEST(train_methods, input) {
 }
 
 TEST(train_methods, output) {
-    carriage main_carriage(5, 2);
-    train main_train;
-    main_train += main_carriage;
+    carriage main_carriage_1(5, 2);
+    carriage main_carriage_2(12, 9);
+    struct carriage *cars = new struct carriage[2];
+    cars[0] = main_carriage_1;
+    cars[1] = main_carriage_2;
+    train main_train(cars, 3);
     std::stringstream ss;
     ss << main_train;
-    ASSERT_EQ("Carriage #0 occupancy: 0 passenger(s)\nCarriage #1 occupancy: 2 passenger(s)\n", ss.str());
+    ASSERT_EQ("Carriage #0 occupancy: 0 passenger(s)\nCarriage #1 occupancy: 2 passenger(s)\nCarriage #2 occupancy: 9 passenger(s)\n", ss.str());
 }
 
 TEST(train_methods, occupy_seats) {
-    carriage main_carriage(18, 7);
-    train main_train;
-    main_train += main_carriage;
+    carriage main_carriage_1(18, 7);
+    carriage main_carriage_2(52, 32);
+    struct carriage *cars = new struct carriage[2];
+    cars[0] = main_carriage_1;
+    cars[1] = main_carriage_2;
+    train main_train(cars, 3);
     ASSERT_ANY_THROW(main_train(-3, 7));
     ASSERT_ANY_THROW(main_train(1, -6));
     ASSERT_ANY_THROW(main_train(3, 8));
@@ -109,9 +115,12 @@ TEST(train_methods, occupy_seats) {
 }
 
 TEST(train_methods, carriage_occupancy_information) {
-    carriage main_carriage(22, 15);
-    train main_train;
-    main_train += main_carriage;
+    carriage main_carriage_1(22, 15);
+    carriage main_carriage_2(31, 12);
+    struct carriage *cars = new struct carriage[2];
+    cars[0] = main_carriage_1;
+    cars[1] = main_carriage_2;
+    train main_train(cars, 3);
     ASSERT_ANY_THROW(main_train[-2]);
     ASSERT_ANY_THROW(main_train[7]);
     ASSERT_NO_THROW(main_train[1]);
