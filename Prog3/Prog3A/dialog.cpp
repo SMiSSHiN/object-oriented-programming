@@ -54,8 +54,8 @@ namespace Prog3A {
         try {
             std::cin >> main_train;
         }
-        catch (const char *error) {
-            std::cerr << error << std::endl;
+        catch (const std::invalid_argument& error) {
+            std::cerr << "Error: " << error.what() << std::endl;
         }
     }
     
@@ -70,8 +70,8 @@ namespace Prog3A {
         try {
             main_train(carriage_index, seats_number);
         }
-        catch (const char *error) {
-            std::cerr << error << std::endl;
+        catch (const std::invalid_argument& error) {
+            std::cerr << "Error: " << error.what() << std::endl;
         }
     }
     
@@ -82,9 +82,9 @@ namespace Prog3A {
             int result = main_train[carriage_index];
             std::cout << "Number of passengers in the carriage: " << result << std::endl;
         }
-        catch (const char *error) {
-            std::cerr << error << std::endl;
-        }        
+        catch (const std::invalid_argument& error) {
+            std::cerr << "Error: " << error.what() << std::endl;
+        }       
     }
     
     void add_carriage(train& main_train) {
@@ -95,8 +95,11 @@ namespace Prog3A {
             carriage main_carriage(carriage_maximum_capacity, carriage_occupied_seats_number);
             main_train += main_carriage;
         }
-        catch (const char *error) {
-            std::cerr << error << std::endl;
+        catch (const std::invalid_argument& error) {
+            std::cerr << "Error: " << error.what() << std::endl;
+        }
+        catch (const std::logic_error& error) {
+            std::cerr << "Error: " << error.what() << std::endl;
         }
     }
     
@@ -119,8 +122,8 @@ namespace Prog3A {
             std::cout << "------------------------------------------------------------" << std::endl;
             std::cout << mini_train;
         }
-        catch (const char *error) {
-            std::cerr << error << std::endl;
+        catch (const std::invalid_argument& error) {
+            std::cerr << "Error: " << error.what() << std::endl;
         }
     }
     

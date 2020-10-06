@@ -1,7 +1,7 @@
 #include "dialog.h"
 
 namespace Prog3C {
-    static constexpr int options_number = 8;
+    static constexpr int options_number = 7;
     
     using opt_t = void(*)(train&);
 
@@ -12,8 +12,7 @@ namespace Prog3C {
         &get_carriage_occupancy_information,
         &add_carriage,
         &unhook_train,
-        &get_passengers_number,
-        &get_average_passengers_number
+        &get_passengers_number
     };
 
     void dialog(train &main_train) {
@@ -47,8 +46,7 @@ namespace Prog3C {
             "4. Get carriage occupancy information" << std::endl <<
             "5. Add carriage to train" << std::endl <<
             "6. Train unhook" << std::endl <<
-            "7. Get passengers number" << std::endl <<
-            "8. Get average passengers number" << std::endl;
+            "7. Get passengers number" << std::endl;
     }
     
     void set_train(train& main_train) {
@@ -56,8 +54,8 @@ namespace Prog3C {
         try {
             std::cin >> main_train;
         }
-        catch (const char *error) {
-            std::cerr << error << std::endl;
+        catch (const std::invalid_argument& error) {
+            std::cerr << "Error: " << error.what() << std::endl;
         }
     }
     
@@ -72,8 +70,8 @@ namespace Prog3C {
         try {
             main_train(carriage_index, seats_number);
         }
-        catch (const char *error) {
-            std::cerr << error << std::endl;
+        catch (const std::invalid_argument& error) {
+            std::cerr << "Error: " << error.what() << std::endl;
         }
     }
     
@@ -84,8 +82,8 @@ namespace Prog3C {
             int result = main_train[carriage_index];
             std::cout << "Number of passengers in the carriage: " << result << std::endl;
         }
-        catch (const char *error) {
-            std::cerr << error << std::endl;
+        catch (const std::invalid_argument& error) {
+            std::cerr << "Error: " << error.what() << std::endl;
         }        
     }
     
@@ -97,8 +95,8 @@ namespace Prog3C {
             carriage main_carriage(carriage_maximum_capacity, carriage_occupied_seats_number);
             main_train += main_carriage;
         }
-        catch (const char *error) {
-            std::cerr << error << std::endl;
+        catch (const std::invalid_argument& error) {
+            std::cerr << "Error: " << error.what() << std::endl;
         }
     }
     
@@ -122,21 +120,12 @@ namespace Prog3C {
             std::cout << "------------------------------------------------------------" << std::endl;
             std::cout << mini_train_copy;
         }
-        catch (const char *error) {
-            std::cerr << error << std::endl;
+        catch (const std::invalid_argument& error) {
+            std::cerr << "Error: " << error.what() << std::endl;
         }
     }
     
     void get_passengers_number(train& main_train) {
         std::cout << "Number of passengers in the train: " << main_train.get_passengers_number() << std::endl;
-    }
-    
-    void get_average_passengers_number(train& main_train) {
-        if (main_train.get_length() > 1) {
-           std::cout << "Average number of passengers in the train: " << main_train.get_passengers_number() / (main_train.get_length() - 1) << std::endl;
-        }
-        else {
-           std::cout << "The train is empty!" << std::endl;
-        }
     }
 }

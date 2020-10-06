@@ -1,5 +1,6 @@
 #include <cstring>
 #include <iostream>
+#include <stdexcept>
 
 #include "train.h"
 
@@ -25,7 +26,7 @@ namespace Prog3C {
     
     carriage& carriage::set_carriage(const int maximum_capacity, const int occupied_seats_number) {
         if (maximum_capacity < 0 || occupied_seats_number < 0 || maximum_capacity < occupied_seats_number) {
-           throw "Invalid carriage parameters!";
+           throw std::invalid_argument("invalid carriage parameters!");
         }
         
         this->maximum_capacity = maximum_capacity;
@@ -72,7 +73,7 @@ namespace Prog3C {
     
     train& train::set_carriages(struct carriage *&cars, const int length) {
         if (length < 0) {
-           throw "Invalid train length!";
+           throw std::length_error("invalid train length!");
         }
 
         this->length = length;
@@ -103,14 +104,14 @@ namespace Prog3C {
 
         in >> carriages_number;
         if (carriages_number < 1) {
-           throw "Invalid carriages number!";
+           throw std::invalid_argument("invalid carriages number!");
         }
         
         for (int i = 0; i < carriages_number; i++) {
             in >> maximum_capacity;
             in >> occupied_seats_number;
             if (maximum_capacity < occupied_seats_number) {
-               throw "Invalid carriage parameters!";
+               throw std::invalid_argument("invalid carriage parameters!");
             }
         
             main_train.cars_push_back({ maximum_capacity, occupied_seats_number });
@@ -160,11 +161,11 @@ namespace Prog3C {
     
     train& train::operator () (const int carriage_index, const int seats_number) {
         if (carriage_index < 1 || carriage_index > this->length - 1) {
-           throw "Invalid carriage index!";
+           throw std::invalid_argument("invalid carriage index!");
         }
 
         if (seats_number < 0 || seats_number >= this->cars[carriage_index].maximum_capacity - this->cars[carriage_index].occupied_seats_number) {
-           throw "Invalid seats number!";
+           throw std::invalid_argument("invalid seats number!");
         }
 
         this->cars[carriage_index].occupied_seats_number += seats_number;
@@ -174,7 +175,7 @@ namespace Prog3C {
     
     const int& train::operator [] (const int carriage_index) const {
         if (carriage_index < 1 || carriage_index > this->length - 1) {
-           throw "Invalid carriage index!";
+           throw std::invalid_argument("invalid carriage index!");
         }
         
         return this->cars[carriage_index].occupied_seats_number;
@@ -188,7 +189,7 @@ namespace Prog3C {
     
     train& train::operator ( ) (const int carriages_number, int *min_train) {
         if (carriages_number < 1 || carriages_number > this->length - 1) {
-           throw "Invalid carriages number!";
+           throw std::invalid_argument("invalid carriages number!");
         }
 
         for (int i = 0; i < carriages_number; i++) {

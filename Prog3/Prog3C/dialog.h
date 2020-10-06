@@ -15,5 +15,4 @@ namespace Prog3C {
     void add_carriage(train& main_train);
     void unhook_train(train& main_train);
     void get_passengers_number(train& main_train);
-    void get_average_passengers_number(train& main_train);
 }

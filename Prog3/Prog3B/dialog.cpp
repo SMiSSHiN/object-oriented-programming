@@ -54,8 +54,8 @@ namespace Prog3B {
         try {
             std::cin >> main_train;
         }
-        catch (const char *error) {
-            std::cerr << error << std::endl;
+        catch (const std::invalid_argument& error) {
+            std::cerr << "Error: " << error.what() << std::endl;
         }
     }
     
@@ -70,8 +70,8 @@ namespace Prog3B {
         try {
             main_train(carriage_index, seats_number);
         }
-        catch (const char *error) {
-            std::cerr << error << std::endl;
+        catch (const std::invalid_argument& error) {
+            std::cerr << "Error: " << error.what() << std::endl;
         }
     }
     
@@ -82,8 +82,8 @@ namespace Prog3B {
             int result = main_train[carriage_index];
             std::cout << "Number of passengers in the carriage: " << result << std::endl;
         }
-        catch (const char *error) {
-            std::cerr << error << std::endl;
+        catch (const std::invalid_argument& error) {
+            std::cerr << "Error: " << error.what() << std::endl;
         }        
     }
     
@@ -95,8 +95,8 @@ namespace Prog3B {
             carriage main_carriage(carriage_maximum_capacity, carriage_occupied_seats_number);
             main_train += main_carriage;
         }
-        catch (const char *error) {
-            std::cerr << error << std::endl;
+        catch (const std::invalid_argument& error) {
+            std::cerr << "Error: " << error.what() << std::endl;
         }
     }
     
@@ -120,8 +120,8 @@ namespace Prog3B {
             std::cout << "------------------------------------------------------------" << std::endl;
             std::cout << mini_train_copy;
         }
-        catch (const char *error) {
-            std::cerr << error << std::endl;
+        catch (const std::invalid_argument& error) {
+            std::cerr << "Error: " << error.what() << std::endl;
         }
     }
     
