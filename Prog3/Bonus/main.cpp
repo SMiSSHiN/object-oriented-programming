@@ -8,16 +8,16 @@
 using namespace Prog3;
 
 int main() {
-	srand(time(NULL));
-	int dices_number;
+    srand(time(NULL));
+    int dices_number;
     try {
-		dices_number = getNum<int>("Number of dices to operate with: ");
+        dices_number = getNum<int>("Number of dices to operate with: ");
         DICE dice(dices_number);
         dialog(dice);
     }
-	catch (const std::length_error& error) {
-		std::cout << "Error: " << error.what() << std::endl;
-	}
+    catch (const std::length_error& error) {
+        std::cout << "Error: " << error.what() << std::endl;
+    }
     catch (std::bad_alloc &ba) {
         std::cout << "Error in allocating memory: " << ba.what() << std::endl;
     }
