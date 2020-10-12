@@ -123,6 +123,9 @@ namespace Prog3B {
         catch (const std::invalid_argument& error) {
             std::cerr << "Error: " << error.what() << std::endl;
         }
+        
+        delete[] min_train;
+        delete[] mini_cars;
     }
     
     void get_passengers_number(train& main_train) {
