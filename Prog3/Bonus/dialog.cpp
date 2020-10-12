@@ -109,7 +109,8 @@ namespace Prog3 {
     }
     
     void another_test_for_your_luck(DICE& dice) {
-        int choice; 
+        int choice;
+        
         try {
             choice = dice[rand() % 10 + 1];
             std::cout << "You have choicen the dice value: " << choice << std::endl;
