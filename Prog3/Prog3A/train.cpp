@@ -30,10 +30,6 @@ namespace Prog3A {
     }
     
     train::train(struct carriage *cars, int length) {
-        if (length < 1 || length > 100) {
-           throw std::length_error("invalid train length!");
-        }
-        
         this->set_length(length);
         this->set_carriages(cars);
     }
